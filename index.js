@@ -6,7 +6,7 @@ function augment (socket) {
   const wbuffer = Buffer.alloc(4)
 
   function die (err) {
-    emitter.emit('error', err)
+    emitter.emit('end', err)
   }
 
   function send (data) {
@@ -28,6 +28,7 @@ function augment (socket) {
 
   let rbuffer = Buffer.alloc(0)
 
+  socket.on('open', () => emitter.emit('open'))
   socket.on('data', (data) => {
     rbuffer = Buffer.concat([rbuffer, data])
 
