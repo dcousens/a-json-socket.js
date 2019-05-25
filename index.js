@@ -28,7 +28,7 @@ function augment (socket) {
 
   let rbuffer = Buffer.alloc(0)
 
-  socket.on('open', () => emitter.emit('open'))
+  socket.on('connect', () => emitter.emit('open'))
   socket.on('data', (data) => {
     rbuffer = Buffer.concat([rbuffer, data])
 
