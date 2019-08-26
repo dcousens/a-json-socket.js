@@ -1,5 +1,5 @@
 # easy-json-net
-A dead-simple JSON `net` socket.
+A compact node.js net socket wrapper for JSON packets.
 
 **For testing or research purposes only,  not reliable.**
 
