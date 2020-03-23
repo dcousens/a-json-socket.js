@@ -5,7 +5,7 @@ function augment (socket) {
   const emitter = new EventEmitter()
   const wbuffer = Buffer.alloc(4)
 
-  function die (err) {
+  function fin (err) {
     emitter.emit('end', err)
   }
 
@@ -42,10 +42,10 @@ function augment (socket) {
     }
   })
 
-  socket.on('close', die)
-  socket.on('end', die)
-  socket.on('error', die)
-  socket.on('timeout', die)
+  socket.on('close', fin)
+  socket.on('end', fin)
+  socket.on('error', fin)
+  socket.on('timeout', fin)
 
   emitter.send = send
   return emitter
