@@ -1,7 +1,7 @@
 # easy-json-net
-A compact node.js net socket wrapper for JSON packets.
+An event emitting `net.Socket`, with 32bit length prefixed JSON.
 
-**For testing or research purposes only,  not reliable.**
+**For testing or research purposes only,  may not be reliable for production usage.**
 
 
 ### LICENSE [MIT](LICENSE)
