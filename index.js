@@ -48,6 +48,8 @@ function augment (socket) {
   socket.on('timeout', fin)
 
   emitter.send = send
+  emitter.end = () => socket.end()
+  emitter.destroy = () => socket.destroy()
   return emitter
 }
 
