@@ -32,7 +32,7 @@ function augment (socket) {
   socket.on('data', (data) => {
     rbuffer = Buffer.concat([rbuffer, data])
 
-    // read JSON packets
+    // read length prefixed packets
     while (rbuffer.length >= 4) {
       const length = rbuffer.readUInt32LE(0)
 
