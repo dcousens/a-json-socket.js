@@ -33,7 +33,7 @@ function augment (socket) {
     rbuffer = Buffer.concat([rbuffer, data])
 
     // read JSON packets
-    while (rbuffer.length > 0) {
+    while (rbuffer.length >= 4) {
       const length = rbuffer.readUInt32LE(0)
 
       if (rbuffer.length < length) break
