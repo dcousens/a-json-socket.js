@@ -1,0 +1,11 @@
+{
+  "name": "easy-json-socket",
+  "version": "0.0.1",
+  "main": "index.js",
+  "repository": "git@github.com:dcousens/easy-json-socket.git",
+  "author": "Daniel Cousens <dcousens@users.noreply.github.com>",
+  "license": "MIT",
+  "dependencies": {
+    "tape": "^5.0.0"
+  }
+}
