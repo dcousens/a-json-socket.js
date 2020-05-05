@@ -2,14 +2,14 @@ const tape = require('tape')
 const net = require('net')
 const { augment } = require('../')
 
-async function echoServer (port, packets) {
+async function echoServer (port) {
   return new Promise((resolve, reject) => {
     const server = net.createServer((socket) => {
       const jsocket = augment(socket)
 
       // echo
-      jsocket.on('packet', (packet) => {
-        jsocket.send(packet)
+      jsocket.on('message', (message) => {
+        jsocket.send(message)
       })
     })
 
@@ -36,8 +36,8 @@ tape('broken data test', (t) => {
     const jsock = augment(socket)
 
     t.plan(1)
-    jsock.on('packet', (packet) => {
-      t.deepEqual(packet, { foo: null })
+    jsock.on('message', (message) => {
+      t.deepEqual(message, { foo: null })
 
       jsock.end()
       server.close()
@@ -51,8 +51,8 @@ tape('echo test', async (t) => {
   const jsock = augment(socket)
 
   await new Promise((resolve) => {
-    jsock.on('packet', (packet) => {
-      t.deepEqual(packet, { foo: 'bar' })
+    jsock.on('message', (message) => {
+      t.deepEqual(message, { foo: 'bar' })
 
       jsock.end()
       server.close(resolve)

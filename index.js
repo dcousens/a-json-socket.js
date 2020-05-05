@@ -20,7 +20,7 @@ function augment (socket) {
   function receive (data) {
     try {
       const parsed = JSON.parse(data.toString('utf8'))
-      emitter.emit('packet', parsed)
+      emitter.emit('message', parsed)
     } catch (e) {
       emitter.emit('error', new TypeError('Bad JSON'))
     }
