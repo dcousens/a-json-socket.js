@@ -22,7 +22,7 @@ function augment (socket) {
       const parsed = JSON.parse(data.toString('utf8'))
       emitter.emit('message', parsed)
     } catch (e) {
-      emitter.emit('error', new TypeError('Bad JSON'))
+      emitter.emit('error', e)
     }
   }
 
