@@ -3,7 +3,6 @@ const EventEmitter = require('events').EventEmitter
 
 function augment (socket) {
   const emitter = new EventEmitter()
-  const wbuffer = Buffer.alloc(4)
 
   function fin (err) {
     emitter.emit('end', err)
@@ -12,6 +11,7 @@ function augment (socket) {
   function send (data) {
     const json = JSON.stringify(data)
 
+    const wbuffer = Buffer.alloc(4)
     wbuffer.writeUInt32LE(4 + json.length, 0)
     socket.write(wbuffer)
     socket.write(json)
